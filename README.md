@@ -26,3 +26,15 @@ sudo apt-get install gcc-multilib
 gcc bseqMP.c -o bseqMP -fopenmp
 time ./bseqMP AAAACCCCGGGGTTTT 88
 ```
+
+### bseqMPI
+```
+# Instalar OpenMPI
+sudo apt-get install libopenmpi-dev
+
+# Compilar e correr
+# Nota: Corre apenas numa máquina com num_processos = 2, todos os processos fazem print
+# Todo: Descobrir como fazer outros processos enviar mensagens para o processo 0?
+mpicc bseqMPI.c -o bseqMPI
+time mpirun -np 2 ./bseqMPI AAAACCCCGGGGTTTT 88
+```
