@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
     if (rank == 0)
         printf("\nQuer buscar a sequência %s com %d%% de similaridade\n", myseq,percentagem);
-    int num_cromossomas = 4;
+    int num_cromossomas = 25;
     int f_start = 1 + rank * num_cromossomas/num_processos;
     int f_end = f_start + num_cromossomas/num_processos;
     for (f=f_start; f < f_end; f++)
