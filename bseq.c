@@ -35,42 +35,38 @@ int main(int argc, char *argv[])
                          156046895, // 23 F
                           57227415}; // 23 M
 
-    
+
     char myseq[tamanho]; // Sequência a ser comparada
     strcpy(myseq,argv[1]); // A sequência entrada pelo utilizador
-    
+
     int f,i,j,k,m;
     float similaridade, maior;
 
     printf("\nQuer buscar a sequência %s com %d%% de similaridade\n", myseq,percentagem);
-    
-    for (f=1; f < 4; f++)
+    int num_cromossomas = 4;
+    for (f=1; f < num_cromossomas; f++)
     {
         char nome[16];
-        int maxler = 8000000;
- //       while (tamanhos[f] % maxler != 0)
- //           maxler--;
+        char cromossoma1[MAXLER]; // Ler blocos para memória
 
-        char cromossoma1[maxler]; // Ler blocos para memória
-        
         sprintf(nome, "Cromossoma%d", f);
         FILE *fp = fopen(nome,"r");
         if (fp == NULL)
             return 0;
-        
-        for (m = 0; m < tamanhos[f]; m+=maxler)
+
+        for (m = 0; m < tamanhos[f]; m+=MAXLER)
         {
 //            printf("Lendo %d caracteres a partir da posição %d do cromossoma %d...\n",maxler,m,f);
-            for(i = 0; i < (maxler); i++)
+            for(i = 0; i < (MAXLER); i++)
             {
-                char base = fgetc(fp); 
+                char base = fgetc(fp);
                 cromossoma1[i] = base;
             }
-        
-            for (j = 0; j < (maxler-tamanho); j++)
+
+            for (j = 0; j < (MAXLER-tamanho); j++)
             {
                 similaridade = 0;
-                for (k=0; k<tamanho; k++) 
+                for (k=0; k<tamanho; k++)
                 {
                     if (myseq[k] == cromossoma1[j+k])
                     {
@@ -80,12 +76,12 @@ int main(int argc, char *argv[])
                 if (similaridade >= percentagem)
                 {
                     printf("Cromossoma %d: Similaridade de %.0f%% na posicao %d: ",f,similaridade,j+m);
-                    for (k=0; k<tamanho; k++) 
+                    for (k=0; k<tamanho; k++)
                         printf("%c",cromossoma1[j+k]);
                     printf("\n");
                     //return 0; // se quiser encontrar só uma ocorrência...
                 }
-            } 
+            }
         }
         fclose(fp);
     }
