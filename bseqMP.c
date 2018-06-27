@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     float maior;
 
     printf("\nQuer buscar a sequência %s com %d%% de similaridade\n", myseq,percentagem);
-    int num_cromossomas = 4 // Número limite de cromossomas a ler
+    int num_cromossomas = 4; // Número limite de cromossomas a ler
     for (f=1; f < num_cromossomas; f++)
     {
       char nome[16];
