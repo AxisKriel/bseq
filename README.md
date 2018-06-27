@@ -19,6 +19,10 @@ time ./bseq AAAACCCCGGGGTTTT 88
 
 ### bseqMP
 ```
+# Instalar OpenMP
+sudo apt-get install gcc-multilib
+
+# Compilar e correr
 gcc bseqMP.c -o bseqMP -fopenmp
 time ./bseqMP AAAACCCCGGGGTTTT 88
 ```
